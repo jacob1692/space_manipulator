@@ -1,0 +1,10 @@
+<launch>
+	<rosparam file="$(find chaser_control)/config/chaser_joint_state.yaml" command="load"/>
+	<node name="joint_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+		output="screen" ns="/chaser" args="joint_state_controller"/>
+	<!--node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_pub" /-->	
+	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_pub" output="screen" ns="chaser">
+		<remap from="/joint_states" to="/chaser/joint_states"/>
+		<param name="publish_frequency" type="double" value="30.0"/>
+	</node>
+</launch>

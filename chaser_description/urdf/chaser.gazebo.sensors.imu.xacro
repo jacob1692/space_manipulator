@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro"> 
+
+	<xacro:macro name="imu_gazebo" params="update_rate">
+		<gazebo>
+			<plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+				<alwaysOn>true</alwaysOn>
+				<bodyName>base_footprint</bodyName>
+				<topicName>chaser/imu</topicName>
+				<serviceName>imu_service</serviceName>
+				<gaussianNoise>0.0</gaussianNoise>
+				<updateRate>${update_rate}</updateRate>
+				<xyzOffset>0.0 0.0 0.0</xyzOffset>
+				<rpyOffset>0.0 0.0 0.0</rpyOffset>
+				<frameName>base_footprint</frameName>
+			</plugin>
+		</gazebo>
+	</xacro:macro>
+</robot>
+	

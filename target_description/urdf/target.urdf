@@ -1,0 +1,84 @@
+<robot
+  name="target">
+  <link
+	name="base_footprint"/>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-2.7756E-17 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="255" />
+      <inertia
+        ixx="3.825"
+        ixy="0"
+        ixz="0"
+        iyy="3.825"
+        iyz="0"
+        izz="3.825" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 -1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://target_description/meshes/target_vis.dae" 
+          scale="0.99 0.99 1"/> <!--This scale was to cover up the panels"-->
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 -1.5707963267949" />
+      <geometry>
+        <!--mesh
+          filename="package://target_description/meshes/target.STL" /-->
+          <box size="0.300 0.300 0.300"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="base_link">
+		<mu1>0.2</mu1>
+		<mu2>0.2</mu2>
+  </gazebo>
+  <gazebo>
+		<plugin name="alwaysenable" filename="libalwaysenable.so"/>
+  </gazebo>
+	<!-- POSE 3D GROUND TRUTH PLUGIN-->
+	<gazebo>
+	  <plugin name="ground_truth" filename="libgazebo_ros_p3d.so">
+		<frameName>map</frameName>
+		<bodyName>base_link</bodyName>
+		<topicName>/target/odom</topicName>
+		<updateRate>30</updateRate>
+	  </plugin>
+	</gazebo>
+	
+	<gazebo>
+	  <plugin name="targetspd" filename="libtargetspd.so"/>
+	</gazebo>
+	
+	
+	<gazebo>
+			<plugin name="GazeboTargetM" filename="libtargetm.so">
+				<robotNamespace>target</robotNamespace>
+				<commandTopic>/joy</commandTopic>
+				<!-- JOYSTICK BUTTONS AND AXES MAPPING -->
+				<joyBEnableCin>0</joyBEnableCin>
+			</plugin>
+	</gazebo>
+	
+   <!-- Attach model to gazebo-->
+  <joint name="base_joint" type="fixed">	
+		<parent link="base_footprint"/>
+		<child link="base_link"/>
+  </joint>
+  
+</robot>

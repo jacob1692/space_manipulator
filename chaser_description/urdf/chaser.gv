@@ -1,0 +1,32 @@
+digraph G {
+node [shape=box];
+"world" [label="world"];
+"base_link" [label="base_link"];
+"arm0" [label="arm0"];
+"arm1" [label="arm1"];
+"arm2" [label="arm2"];
+"arm2_1" [label="arm2_1"];
+"arm3" [label="arm3"];
+"arm3_1" [label="arm3_1"];
+"hand_base" [label="hand_base"];
+"hand" [label="hand"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"world" -> "base_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"base_joint" -> "base_link"
+"base_link" -> "j1" [label="xyz: 0.10324 0 0 \nrpy: 0 1.5708 -0"]
+"j1" -> "arm0"
+"arm0" -> "j2" [label="xyz: 0 0 0.0467 \nrpy: 1.5708 -0.7854 3.14159"]
+"j2" -> "arm1"
+"arm1" -> "j3" [label="xyz: 0.16667 0 0.021 \nrpy: 0 -0 1.5708"]
+"j3" -> "arm2"
+"arm2" -> "j4" [label="xyz: 0.021 0 0.018 \nrpy: 1.5708 -0 1.5708"]
+"j4" -> "arm2_1"
+"arm2_1" -> "j5" [label="xyz: 0 -0.021 0.14567 \nrpy: 1.5708 -0.78541 -3.14159"]
+"j5" -> "arm3"
+"arm3" -> "j6" [label="xyz: 0.01717 0 -0.018 \nrpy: 1.5708 -0 1.5708"]
+"j6" -> "arm3_1"
+"arm3_1" -> "d1" [label="xyz: 0 0 0.15 \nrpy: 0 -0 0"]
+"d1" -> "hand_base"
+"hand_base" -> "f1" [label="xyz: 0 0 -0.16 \nrpy: 0 -0 0"]
+"f1" -> "hand"
+}

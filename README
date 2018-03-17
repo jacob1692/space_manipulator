@@ -1,0 +1,1 @@
+the python scripts contact_data_sub and relative_vel are ROS nodes that will condition the data to be plotted in real time. However, the values used for the robot for the control are actually taken directly from Gazebo to feed the Space Dyn Interface. 

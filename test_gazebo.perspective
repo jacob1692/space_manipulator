@@ -1,0 +1,572 @@
+{
+  "keys": {}, 
+  "groups": {
+    "pluginmanager": {
+      "keys": {
+        "running-plugins": {
+          "type": "repr", 
+          "repr": "{u'rqt_plot/Plot': [4, 1]}"
+        }
+      }, 
+      "groups": {
+        "plugin__rqt_plot__Plot__3": {
+          "keys": {}, 
+          "groups": {
+            "dock_widget__DataPlotWidget": {
+              "keys": {
+                "dockable": {
+                  "type": "repr", 
+                  "repr": "u'true'"
+                }, 
+                "parent": {
+                  "type": "repr", 
+                  "repr": "None"
+                }, 
+                "dock_widget_title": {
+                  "type": "repr", 
+                  "repr": "u'CHASER ANGULAR VELOCITY'"
+                }
+              }, 
+              "groups": {}
+            }, 
+            "plugin": {
+              "keys": {
+                "autoscroll": {
+                  "type": "repr", 
+                  "repr": "u'true'"
+                }, 
+                "plot_type": {
+                  "type": "repr", 
+                  "repr": "u'0'"
+                }, 
+                "topics": {
+                  "type": "repr", 
+                  "repr": "[u'/chaser/odom/twist/twist/angular/z', u'/chaser/odom/twist/twist/angular/y', u'/chaser/odom/twist/twist/angular/x']"
+                }, 
+                "y_limits": {
+                  "type": "repr", 
+                  "repr": "[u'-0.42163502546905013', u'0.57836600952703621']"
+                }, 
+                "x_limits": {
+                  "type": "repr", 
+                  "repr": "[u'-54.855979410778218', u'101.11500000000001']"
+                }
+              }, 
+              "groups": {}
+            }
+          }
+        }, 
+        "plugin__MultiplotPlugin__2": {
+          "keys": {}, 
+          "groups": {
+            "plugin": {
+              "keys": {}, 
+              "groups": {
+                "history": {
+                  "keys": {
+                    "max_length": {
+                      "type": "repr", 
+                      "repr": "u'10'"
+                    }
+                  }, 
+                  "groups": {}
+                }
+              }
+            }
+          }
+        }, 
+        "plugin__rqt_reconfigure__Param__1": {
+          "keys": {}, 
+          "groups": {
+            "plugin": {
+              "keys": {
+                "splitter": {
+                  "type": "repr(QByteArray.hex)", 
+                  "repr(QByteArray.hex)": "QtCore.QByteArray('000000ff0000000100000002000000fe0000006401ffffffff010000000100')", 
+                  "pretty-print": "         d     "
+                }, 
+                "_splitter": {
+                  "type": "repr(QByteArray.hex)", 
+                  "repr(QByteArray.hex)": "QtCore.QByteArray('000000ff00000001000000020000012c000000670100000009010000000200')", 
+                  "pretty-print": "       , g     "
+                }
+              }, 
+              "groups": {}
+            }
+          }
+        }, 
+        "plugin__rqt_image_view__ImageView__1": {
+          "keys": {}, 
+          "groups": {
+            "dock_widget__ImageViewWidget": {
+              "keys": {
+                "dockable": {
+                  "type": "repr", 
+                  "repr": "u'true'"
+                }, 
+                "parent": {
+                  "type": "repr", 
+                  "repr": "None"
+                }, 
+                "dock_widget_title": {
+                  "type": "repr", 
+                  "repr": "u'Image View'"
+                }
+              }, 
+              "groups": {}
+            }, 
+            "plugin": {
+              "keys": {
+                "max_range": {
+                  "type": "repr", 
+                  "repr": "u'8'"
+                }, 
+                "mouse_pub_topic": {
+                  "type": "repr", 
+                  "repr": "u'/chaser/image_raw/compressed_mouse_left'"
+                }, 
+                "zoom1": {
+                  "type": "repr", 
+                  "repr": "u'false'"
+                }, 
+                "dynamic_range": {
+                  "type": "repr", 
+                  "repr": "u'false'"
+                }, 
+                "topic": {
+                  "type": "repr", 
+                  "repr": "u'/chaser/image_raw/compressed'"
+                }, 
+                "publish_click_location": {
+                  "type": "repr", 
+                  "repr": "u'true'"
+                }
+              }, 
+              "groups": {}
+            }
+          }
+        }, 
+        "plugin__rqt_plot__Plot__1": {
+          "keys": {}, 
+          "groups": {
+            "dock_widget__DataPlotWidget": {
+              "keys": {
+                "dockable": {
+                  "type": "repr", 
+                  "repr": "True"
+                }, 
+                "parent": {
+                  "type": "repr", 
+                  "repr": "None"
+                }, 
+                "dock_widget_title": {
+                  "type": "repr", 
+                  "repr": "u'CONTACT TORQUE'"
+                }
+              }, 
+              "groups": {}
+            }, 
+            "plugin": {
+              "keys": {
+                "autoscroll": {
+                  "type": "repr", 
+                  "repr": "True"
+                }, 
+                "plot_type": {
+                  "type": "repr", 
+                  "repr": "0"
+                }, 
+                "topics": {
+                  "type": "repr", 
+                  "repr": "u''"
+                }, 
+                "y_limits": {
+                  "type": "repr", 
+                  "repr": "[-1.8854118025859772, 1.3979790816362763]"
+                }, 
+                "x_limits": {
+                  "type": "repr", 
+                  "repr": "[1.4888972332373918, 20.9885]"
+                }
+              }, 
+              "groups": {}
+            }
+          }
+        }, 
+        "plugin__rqt_plot__Plot__2": {
+          "keys": {}, 
+          "groups": {
+            "dock_widget__DataPlotWidget": {
+              "keys": {
+                "dockable": {
+                  "type": "repr", 
+                  "repr": "u'true'"
+                }, 
+                "parent": {
+                  "type": "repr", 
+                  "repr": "None"
+                }, 
+                "dock_widget_title": {
+                  "type": "repr", 
+                  "repr": "u'TARGET LINEAR VELOCITY'"
+                }
+              }, 
+              "groups": {}
+            }, 
+            "plugin": {
+              "keys": {
+                "autoscroll": {
+                  "type": "repr", 
+                  "repr": "u'true'"
+                }, 
+                "plot_type": {
+                  "type": "repr", 
+                  "repr": "u'0'"
+                }, 
+                "topics": {
+                  "type": "repr", 
+                  "repr": "[u'/target/odom/twist/twist/linear/z', u'/target/odom/twist/twist/linear/x', u'/target/odom/twist/twist/linear/y']"
+                }, 
+                "y_limits": {
+                  "type": "repr", 
+                  "repr": "[u'-39917.297581591542', u'38837.864673395117']"
+                }, 
+                "x_limits": {
+                  "type": "repr", 
+                  "repr": "[u'-122.23031195059257', u'63.618000000000009']"
+                }
+              }, 
+              "groups": {}
+            }
+          }
+        }, 
+        "plugin__MultiplotPlugin__1": {
+          "keys": {}, 
+          "groups": {
+            "dock_widget__MultiplotWidget": {
+              "keys": {
+                "dockable": {
+                  "type": "repr", 
+                  "repr": "u'true'"
+                }, 
+                "parent": {
+                  "type": "repr", 
+                  "repr": "None"
+                }, 
+                "dock_widget_title": {
+                  "type": "repr", 
+                  "repr": "u'Multiplot - [file:///home/jacob/catkin_ws/src/rqt_multiplot.xml]'"
+                }
+              }, 
+              "groups": {}
+            }, 
+            "plugin": {
+              "keys": {}, 
+              "groups": {
+                "history": {
+                  "keys": {
+                    "max_length": {
+                      "type": "repr", 
+                      "repr": "u'10'"
+                    }, 
+                    "config_0": {
+                      "type": "repr", 
+                      "repr": "u'file:///home/jacob/catkin_ws/src/rqt_multiplot.xml'"
+                    }
+                  }, 
+                  "groups": {}
+                }
+              }
+            }
+          }
+        }, 
+        "plugin__rqt_plot__Plot__4": {
+          "keys": {}, 
+          "groups": {
+            "dock_widget__DataPlotWidget": {
+              "keys": {
+                "dockable": {
+                  "type": "repr", 
+                  "repr": "True"
+                }, 
+                "parent": {
+                  "type": "repr", 
+                  "repr": "None"
+                }, 
+                "dock_widget_title": {
+                  "type": "repr", 
+                  "repr": "u'CONTACT FORCE'"
+                }
+              }, 
+              "groups": {}
+            }, 
+            "plugin": {
+              "keys": {
+                "autoscroll": {
+                  "type": "repr", 
+                  "repr": "True"
+                }, 
+                "plot_type": {
+                  "type": "repr", 
+                  "repr": "0"
+                }, 
+                "topics": {
+                  "type": "repr", 
+                  "repr": "u''"
+                }, 
+                "y_limits": {
+                  "type": "repr", 
+                  "repr": "[-3854151.6067647934, 2612506.938505631]"
+                }, 
+                "x_limits": {
+                  "type": "repr", 
+                  "repr": "[-18244.42975791202, -169.15023340713742]"
+                }
+              }, 
+              "groups": {}
+            }
+          }
+        }, 
+        "plugin__rqt_bag__Bag__1": {
+          "keys": {}, 
+          "groups": {
+            "dock_widget__": {
+              "keys": {}, 
+              "groups": {
+                "chaser": {
+                  "keys": {}, 
+                  "groups": {
+                    "joint_states__Plot": {
+                      "keys": {
+                        "dockable": {
+                          "type": "repr", 
+                          "repr": "u'true'"
+                        }, 
+                        "parent": {
+                          "type": "repr", 
+                          "repr": "None"
+                        }, 
+                        "dock_widget_title": {
+                          "type": "repr", 
+                          "repr": "u'/chaser/joint_states__Plot'"
+                        }
+                      }, 
+                      "groups": {}
+                    }, 
+                    "odom__Plot": {
+                      "keys": {
+                        "dockable": {
+                          "type": "repr", 
+                          "repr": "u'true'"
+                        }, 
+                        "parent": {
+                          "type": "repr", 
+                          "repr": "None"
+                        }, 
+                        "dock_widget_title": {
+                          "type": "repr", 
+                          "repr": "u'/chaser/odom__Plot'"
+                        }
+                      }, 
+                      "groups": {}
+                    }, 
+                    "d1_ft_sensor_topic__Plot": {
+                      "keys": {
+                        "dockable": {
+                          "type": "repr", 
+                          "repr": "u'true'"
+                        }, 
+                        "parent": {
+                          "type": "repr", 
+                          "repr": "None"
+                        }, 
+                        "dock_widget_title": {
+                          "type": "repr", 
+                          "repr": "u'/chaser/d1_ft_sensor_topic__Plot'"
+                        }
+                      }, 
+                      "groups": {}
+                    }
+                  }
+                }
+              }
+            }, 
+            "dock_widget__BagWidget": {
+              "keys": {
+                "dockable": {
+                  "type": "repr", 
+                  "repr": "u'false'"
+                }, 
+                "parent": {
+                  "type": "repr", 
+                  "repr": "None"
+                }, 
+                "dock_widget_title": {
+                  "type": "repr", 
+                  "repr": "u'Bag'"
+                }
+              }, 
+              "groups": {}
+            }
+          }
+        }, 
+        "plugin__rqt_robot_steering__RobotSteering__1": {
+          "keys": {}, 
+          "groups": {
+            "dock_widget__RobotSteeringUi": {
+              "keys": {
+                "dockable": {
+                  "type": "repr", 
+                  "repr": "u'true'"
+                }, 
+                "parent": {
+                  "type": "repr", 
+                  "repr": "None"
+                }, 
+                "dock_widget_title": {
+                  "type": "repr", 
+                  "repr": "u'Robot Steering'"
+                }
+              }, 
+              "groups": {}
+            }, 
+            "plugin": {
+              "keys": {
+                "topic": {
+                  "type": "repr", 
+                  "repr": "u'/cmd_vel'"
+                }, 
+                "vx_min": {
+                  "type": "repr", 
+                  "repr": "u'-1'"
+                }, 
+                "vw_min": {
+                  "type": "repr", 
+                  "repr": "u'-3'"
+                }, 
+                "vw_max": {
+                  "type": "repr", 
+                  "repr": "u'3'"
+                }, 
+                "vx_max": {
+                  "type": "repr", 
+                  "repr": "u'1'"
+                }
+              }, 
+              "groups": {}
+            }
+          }
+        }, 
+        "plugin__rqt_top__TOP__1": {
+          "keys": {}, 
+          "groups": {
+            "dock_widget__": {
+              "keys": {
+                "dockable": {
+                  "type": "repr", 
+                  "repr": "u'true'"
+                }, 
+                "parent": {
+                  "type": "repr", 
+                  "repr": "None"
+                }, 
+                "dock_widget_title": {
+                  "type": "repr", 
+                  "repr": "u'Process Monitor'"
+                }
+              }, 
+              "groups": {}
+            }, 
+            "plugin": {
+              "keys": {
+                "is_regex": {
+                  "type": "repr", 
+                  "repr": "u'0'"
+                }, 
+                "filter_text": {
+                  "type": "repr", 
+                  "repr": "u''"
+                }
+              }, 
+              "groups": {}
+            }
+          }
+        }, 
+        "plugin__rqt_joint_trajectory_controller__JointTrajectoryController__1": {
+          "keys": {}, 
+          "groups": {
+            "plugin": {
+              "keys": {
+                "jtc_name": {
+                  "type": "repr", 
+                  "repr": "u'arm_joint_controller'"
+                }, 
+                "cm_ns": {
+                  "type": "repr", 
+                  "repr": "u'/chaser/controller_manager'"
+                }
+              }, 
+              "groups": {}
+            }, 
+            "dock_widget__JointTrajectoryControllerUi": {
+              "keys": {
+                "dockable": {
+                  "type": "repr", 
+                  "repr": "u'true'"
+                }, 
+                "parent": {
+                  "type": "repr", 
+                  "repr": "None"
+                }, 
+                "dock_widget_title": {
+                  "type": "repr", 
+                  "repr": "u'Joint trajectory controller'"
+                }
+              }, 
+              "groups": {}
+            }
+          }
+        }, 
+        "plugin__rqt_pose_view__PoseView__1": {
+          "keys": {}, 
+          "groups": {
+            "plugin": {
+              "keys": {
+                "view_matrix": {
+                  "type": "repr", 
+                  "repr": "u'[[0.6356929540634155, 0.28183913230895996, -0.7186530232429504, 0.0], [-0.7704064249992371, 0.2903285622596741, -0.5676119327545166, 0.0], [0.04866998642683029, 0.9144821166992188, 0.40168946981430054, 0.0], [0.0, -3.000000238418579, -17.5, 1.0]]'"
+                }
+              }, 
+              "groups": {}
+            }
+          }
+        }
+      }
+    }, 
+    "mainwindow": {
+      "keys": {
+        "geometry": {
+          "type": "repr(QByteArray.hex)", 
+          "repr(QByteArray.hex)": "QtCore.QByteArray('01d9d0cb000200000000052a0000002b000009ff000005ac0000052a0000004e000009ff000005ac00000000000000000a00')", 
+          "pretty-print": "     * +     * N         "
+        }, 
+        "state": {
+          "type": "repr(QByteArray.hex)", 
+          "repr(QByteArray.hex)": "QtCore.QByteArray('000000ff00000000fd000000040000000000000c2f0000004efc0200000001fc000005160000004e0000000000fffffffc0100000003fc00000000000006140000000000fffffffa000000000200000002fb0000005a007200710074005f0069006d006100670065005f0076006900650077005f005f0049006d0061006700650056006900650077005f005f0031005f005f0049006d00610067006500560069006500770057006900640067006500740100000000ffffffff0000000000000000fb000000b4007200710074005f006a006f0069006e0074005f007400720061006a006500630074006f00720079005f0063006f006e00740072006f006c006c00650072005f005f004a006f0069006e0074005400720061006a006500630074006f007200790043006f006e00740072006f006c006c00650072005f005f0031005f005f004a006f0069006e0074005400720061006a006500630074006f007200790043006f006e00740072006f006c006c006500720055006901000002a50000029c0000000000000000fb00000022007200710074005f0074006f0070005f005f0054004f0050005f005f0031005f005f0100000000000001b60000000000000000fc0000061d000006120000000000fffffffa000000000200000001fb0000006a007200710074005f0072006f0062006f0074005f007300740065006500720069006e0067005f005f0052006f0062006f0074005300740065006500720069006e0067005f005f0031005f005f0052006f0062006f0074005300740065006500720069006e006700550069010000000000000541000000000000000000000001000009ac00000564fc0200000001fb00000050007200710074005f0070006f00730065005f0076006900650077005f005f0050006f007300650056006900650077005f005f0031005f005f0047004c0056006900650077005700690064006700650074030000000900000120000009ac0000029e00000002000004d600000541fc0100000006fb00000046004d0075006c007400690070006c006f00740050006c007500670069006e005f005f0032005f005f004d0075006c007400690070006c006f007400570069006400670065007401000000000000047e0000000000000000fb00000034007200710074005f006200610067005f005f004200610067005f005f0031005f005f0042006100670057006900640067006500740100000000000004190000000000000000fc00000000000004d60000000000fffffffa000000000200000003fb00000062007200710074005f006200610067005f005f004200610067005f005f0031005f005f002f006300680061007300650072002f00640031005f00660074005f00730065006e0073006f0072005f0074006f007000690063005f005f0050006c006f00740100000000ffffffff0000000000000000fb00000046007200710074005f006200610067005f005f004200610067005f005f0031005f005f002f006300680061007300650072002f006f0064006f006d005f005f0050006c006f00740100000000ffffffff0000000000000000fb00000046004d0075006c007400690070006c006f00740050006c007500670069006e005f005f0031005f005f004d0075006c007400690070006c006f0074005700690064006700650074010000013f000004170000000000000000fb00000064007200710074005f006200610067005f005f004200610067005f005f0031005f005f002f006300680061007300650072002f00680061006e0064005f0063006f006e0074006100630074005f007700720065006e00630068005f005f0050006c006f007401000007b1000001fb0000000000000000fc0000000000000254000001ce00fffffffc0200000002fb00000042007200710074005f0070006c006f0074005f005f0050006c006f0074005f005f0032005f005f00440061007400610050006c006f00740057006900640067006500740100000000000002ab0000000000000000fb00000042007200710074005f0070006c006f0074005f005f0050006c006f0074005f005f0034005f005f00440061007400610050006c006f0074005700690064006700650074010000000000000541000000cb00fffffffc0000025d00000279000001ce00fffffffc0200000002fb00000042007200710074005f0070006c006f0074005f005f0050006c006f0074005f005f0031005f005f00440061007400610050006c006f0074005700690064006700650074010000000000000541000000cb00fffffffb00000042007200710074005f0070006c006f0074005f005f0050006c006f0074005f005f0033005f005f00440061007400610050006c006f00740057006900640067006500740100000000000005410000000000000000000000030000057c000000cbfc0100000005fb00000052007200710074005f006200610067005f005f004200610067005f005f0031005f005f002f006300680061007300650072002f00680061006e0064005f00620075006d007000650072005f005f0052006100770100000505000002a30000000000000000fb00000056007200710074005f006200610067005f005f004200610067005f005f0031005f005f002f00670061007a00650062006f002f006d006f00640065006c005f007300740061007400650073005f005f0050006c006f007401000004c7000004e50000000000000000fb00000056007200710074005f006200610067005f005f004200610067005f005f0031005f005f002f006300680061007300650072002f006a006f0069006e0074005f007300740061007400650073005f005f0050006c006f007401000003d9000005d30000000000000000fb0000006c007200710074005f007200650063006f006e006600690067007500720065005f005f0050006100720061006d005f005f0031005f005f005f0070006c007500670069006e0063006f006e007400610069006e00650072005f0074006f0070005f0077006900640067006500740100000000000009ac0000000000000000fb0000006a007200710074005f006200610067005f005f004200610067005f005f0031005f005f002f00670061007a00650062006f002f0070006100720061006d0065007400650072005f006400650073006300720069007000740069006f006e0073005f005f0050006c006f00740100000000000009ac0000000000000000000004d60000000000000004000000040000000800000008fc00000001000000030000000100000036004d0069006e0069006d0069007a006500640044006f0063006b00570069006400670065007400730054006f006f006c0062006100720000000000ffffffff0000000000000000')", 
+          "pretty-print": "                   N                      Zrqt_image_view__ImageView__1__ImageViewWidget           rqt_joint_trajectory_controller__JointTrajectoryController__1__JointTrajectoryControllerUi          \"rqt_top__TOP__1__                                                                                 A         d                                                           A                                            ~                                                        brqt_bag__Bag__1__/chaser/d1_ft_sensor_topic__Plot          Frqt_bag__Bag__1__/chaser/odom__Plot          FMultiplotPlugin__1__MultiplotWidget          drqt_bag__Bag__1__/chaser/hand_contact_wrench__Plot            T                                                                                          A                 Brqt_plot__Plot__1__DataPlotWidget          Brqt_plot__Plot__3__DataPlotWidget                   Rrqt_bag__Bag__1__/chaser/hand_bumper__Raw          Vrqt_bag__Bag__1__/gazebo/model_states__Plot          Vrqt_bag__Bag__1__/chaser/joint_states__Plot          lrqt_reconfigure__Param__1___plugincontainer_top_widget          jrqt_bag__Bag__1__/gazebo/parameter_descriptions__Plot                            6MinimizedDockWidgetsToolbar        "
+        }
+      }, 
+      "groups": {
+        "toolbar_areas": {
+          "keys": {
+            "MinimizedDockWidgetsToolbar": {
+              "type": "repr", 
+              "repr": "8"
+            }
+          }, 
+          "groups": {}
+        }
+      }
+    }
+  }
+}

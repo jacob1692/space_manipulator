@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package>
+  <name>active_debris_control</name>
+  <version>0.1.0</version>
+  <description>active_debris_control_Tohoku_University</description>
+
+  <maintainer email="jacob.hernandezsanchez@epfl.ch">jacob</maintainer>
+  <license>BSD</license>
+  <author>jacob</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>message_generation</build_depend>
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  
+  <run_depend>message_runtime</run_depend>
+  <run_depend>gazebo_ros</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>target_description</run_depend>
+  <run_depend>chaser_description</run_depend>
+  <run_depend>chaser_control</run_depend>
+  <run_depend>chaser_bringup</run_depend>
+
+  <export>
+	<gazebo_ros gazebo_model_path="${prefix}/models"/>
+  </export>
+	
+</package>

@@ -1,0 +1,31 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%from here %%%%%%%%%%%%%%%%%%%%%%% %%%
+[Variable definition]
+[Setting link parameters]
+Mass (m), moment of inertia (I), length of each link (c)
+[Initial value setting]
+Joint angle (φ), joint angular velocity (φ ˙), joint angular acceleration (φ ¨)
+Position / attitude (r 0, A 0) of link 0 (base),
+The velocity of the link 0 (base), the angular velocity (v 0, ω 0), the acceleration of the link 0 (base), the angular acceleration (v ˙ 0, ω ˙ 0)
+The rotation matrix (A) of the coordinate system of each link, the external force (f e, ne) acting on the end point,
+External forces (F 0, N 0) acting on the base, shaft torque (τ) acting on the joint,
+Various coefficients concerning joint compliance and contact
+<Simulation loop>
+Calculation of forward kinematics (Calculation of hand position)
+↓
+Calculation of coordinate rotation matrix A
+Calculate the position ri of each link center of gravity by forward kinematics
+↓
+Calculation of Jacobian matrix
+↓
+Calculation of inertia matrix H
+↓
+Calculation of velocity nonlinear term d
+↓
+Compute the external force f e, ne to the link
+↓
+Calculate joint torque τ (control formula)
+↓
+Calculate v ˙ 0, ω ˙ 0, φ ¨ at the next time from the equation of motion (37)
+Integrate these to find r 0, A 0, v 0, ω 0, φ, φ ˙ at the next time.
+<Loop so far>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%

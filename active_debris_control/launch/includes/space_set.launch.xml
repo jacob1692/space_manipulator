@@ -1,0 +1,33 @@
+<launch>
+	<!--CHASER-->
+	<arg name="joystick" default="false"/>
+	<arg name="roscontrol" default="false"/>
+	<arg name="simple" default="false" />
+	<group>
+		<arg name="POSE0c.X" default="-0.5"/>
+		<arg name="POSE0c.Y" default="0"/>
+		<arg name="POSE0c.Z" default="0.3"/>
+		<include file="$(find chaser_bringup)/launch/chaser.bringup.launch"> <!--Load the robot into the server, its controllers and other publishers-->
+			<arg name="standalone" value="false"/> <!-- INDICATE THAT THE SIMULATION WILL INCORPORATE THE TARGET-->
+			<arg name="joystick" value="$(arg joystick)"/>
+			<arg name="roscontrol" value="$(arg roscontrol)"/>
+			<arg name="simple" value="$(arg simple)"/>
+		</include>	
+			<include file="$(find active_debris_control)/launch/includes/robot.launch.xml">
+			<arg name="init_pose" value="-x $(arg POSE0c.X) -y $(arg POSE0c.Y) -z $(arg POSE0c.Z)" />
+			<arg name="robot_name" value="chaser"/>
+		</include>
+	</group>
+	<!--TARGET--> 
+	<group ns="target">
+		<arg name="POSE0t.X" default="0.3"/>
+		<arg name="POSE0t.Y" default="0"/>
+		<arg name="POSE0t.Z" default="0.3"/>
+		<arg name="model" default="$(find target_description)/urdf/target.urdf.xacro"/>
+		<param name="robot_description" command="$(find xacro)/xacro $(arg model) joystick_c:=$(arg joystick) --xacro-ns --inorder" />
+		<include file="$(find active_debris_control)/launch/includes/robot.launch.xml">
+			<arg name="init_pose" value="-x $(arg POSE0t.X) -y $(arg POSE0t.Y) -z $(arg POSE0t.Z)" />
+			<arg name="robot_name" value="target"/>
+		</include>
+	</group>
+</launch>

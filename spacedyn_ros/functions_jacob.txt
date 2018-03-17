@@ -1,0 +1,1 @@
+I developed calc_GC.cpp, matrix_dev in matrix.cpp, calcGje.cpp, calcGH.cpp

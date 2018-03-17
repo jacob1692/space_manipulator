@@ -1,0 +1,17 @@
+<package>
+  <name>tohoku_space_manipulator</name>
+  <version>1.3.1</version>
+  <description> This is the metapackage containing the modules of Jacob's master thesis</description>
+  <maintainer email="jacob.hernandezsanchez@epfl.ch">jacob</maintainer>
+  <license>TODO</license> <!-- TBD-->
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>active_debris_control</run_depend>
+  <run_depend>chaser_description</run_depend>
+  <run_depend>chaser_control</run_depend>
+  <run_depend>chaser_bringup</run_depend>
+  <run_depend>chaser_moveit_config</run_depend>
+  <run_depend>target_description</run_depend>
+  <run_depend>spacedyn_ros</run_depend>
+</package>
+

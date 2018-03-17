@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:property name="mesh_path" value="chaser_description/models/robot1.0/meshes"/> 
+	<xacro:macro name="arm_create" > 
+	<xacro:property name="scale" value="1"/>
+	  <link
+		name="arm0">
+		<inertial>
+		  <origin
+			xyz="-0.0 ${-0.0099455*scale} ${0.031502*scale}"
+			rpy="0 0 0" />
+		  <mass
+			value="2.188" />
+		  <inertia
+			ixx="0.0020655263"
+			ixy="-1.03600944159698E-18"
+			ixz="7.98425222551929E-19"
+			iyy="0.0015236909"
+			iyz="-0.000330738"
+			izz="-0.0" />
+		</inertial>
+		<visual>
+		  <geometry>
+			<mesh
+			  filename="package://${mesh_path}/arm0.dae" scale="${scale} ${scale} ${scale}"/>
+		  </geometry>
+		</visual>
+		<collision>
+		  <geometry>
+			<mesh
+			  filename="package://${mesh_path}/arm0_col.STL"/>
+		  </geometry>
+		</collision>
+	  </link>
+	  
+	  <link
+		name="arm1">
+		<inertial>
+		  <origin
+			xyz="-0.0 -0.0 -0.0"
+			rpy="0 0 0" />
+		  <mass
+			value="0.684" />
+		  <inertia
+			ixx="0.0001629973"
+			ixy="1.76783063254965E-07"
+			ixz="3.44463435626053E-20"
+			iyy="0.000161804"
+			iyz="1.78234800433147E-20"
+			izz="0.0001942075" />
+		</inertial>
+		<visual>
+		  <geometry>
+			<mesh
+			  filename="package://${mesh_path}/arm1.dae" />
+		  </geometry>
+		</visual>
+		<collision>
+		  <geometry>
+			<mesh
+			  filename="package://${mesh_path}/arm1_col.STL"  scale="${scale} ${scale} ${scale}"/>
+		  </geometry>
+		</collision>
+	  </link>
+	  
+	  	<link
+		name="arm1_1">
+		<inertial>
+		  <origin
+			xyz="0 0 ${0.0940740*scale}"
+			rpy="0 0 0" />
+		  <mass
+			value="1.403" />
+		  <inertia
+			ixx="0.0035182671"
+			ixy="1.48956570040176E-08"
+			ixz="-1.62260783077023E-06"
+			iyy="0.0035143154"
+			iyz="3.12588982516402E-05"
+			izz="0.0002606412" />
+		</inertial>
+		<visual>
+		  <geometry>
+			<mesh
+			  filename="package://${mesh_path}/arm1_1.dae" scale="${scale} ${scale} ${scale}" />
+		  </geometry>
+		</visual>
+		<collision>
+		  <geometry>
+			<mesh
+			  filename="package://${mesh_path}/arm1_1_col.STL" scale="${scale} ${scale} ${scale}" />
+		  </geometry>
+		</collision>
+	  </link>
+	  
+	  <link
+		name="arm2">
+		<inertial>
+		  <origin
+			xyz="${0.00145198*scale} 0 ${0.0190117*scale}"
+			rpy="0 0 0" />
+		  <mass
+			value="0.684" />
+		  <inertia
+			ixx="0.000166649"
+			ixy="0.000000151"
+			ixz="-1.00480707572084E-06"
+			iyy="0.0001656077"
+			iyz="-4.93074869865452E-08"
+			izz="0.0001872872" />
+		</inertial>
+		<visual>
+		  <geometry>
+			<mesh
+			  filename="package://${mesh_path}/arm2.dae" scale="${scale} ${scale} ${scale}"/>
+		  </geometry>
+		</visual>
+		<collision>
+		  <geometry>
+			<mesh
+			  filename="package://${mesh_path}/arm2_col.STL" scale="${scale} ${scale} ${scale}"/>
+		  </geometry>
+		</collision>
+	  </link>
+	  <link
+		name="arm2_1">
+		<inertial>
+		  <origin
+			xyz="0.0 ${-0.000474807*scale} ${0.0940740*scale}"
+			rpy="0 0 0" />
+		  <mass
+			value="1.403" />
+		  <inertia
+			ixx="0.0035162283"
+			ixy="1.63775393312065E-08"
+			ixz="1.62260783073914E-06"
+			iyy="0.0035143154"
+			iyz="-3.43686643307904E-05"
+			izz="0.0002586024" />
+		</inertial>
+		<visual>
+		  <geometry>
+			<mesh
+			  filename="package://${mesh_path}/arm2_1.dae" scale="${scale} ${scale} ${scale}"/>
+		  </geometry>
+		</visual>
+		<collision>
+		  <geometry>
+			<mesh
+			  filename="package://${mesh_path}/arm2_1_col.STL" scale="${scale} ${scale} ${scale}"/>
+		  </geometry>
+		</collision>
+	  </link>
+	  <link
+		name="arm3">
+		<inertial>
+		  <origin
+			xyz="${0.0449361*scale} ${-0.000259019*scale} ${-0.0185460*scale}"
+			rpy="0 0 0" />
+		  <mass
+			value="1.3470380057" />
+		  <inertia
+			ixx="0.0001927432"
+			ixy="-2.89797715428797E-05"
+			ixz="3.30477933144638E-05"
+			iyy="0.002441563"
+			iyz="-1.90493140925181E-07"
+			izz="0.0024412314" />
+		</inertial>
+		<visual>
+		  <geometry>
+			<mesh
+			  filename="package://${mesh_path}/arm3.dae" scale="${scale} ${scale} ${scale}"/>
+		  </geometry>
+		</visual>
+		<collision>
+		  <geometry>
+			<mesh
+			  filename="package://${mesh_path}/arm3_col.STL" scale="${scale} ${scale} ${scale}"/>
+		  </geometry>
+		</collision>
+	  </link>
+	  <link
+		name="hand">
+		<inertial>
+		  <origin
+			xyz="-0.0 -0.0 ${0.0265827*scale}"  
+			rpy="0.0 0.0 0.0" /> 
+		  <mass
+			value="0.283" />
+		  <inertia
+			ixx="0.000072121"
+			ixy="0"
+			ixz="0"
+			iyy="0.000072121"
+			iyz="0"
+			izz="0.000031537" />
+		</inertial>
+		<visual>
+		  <geometry>
+			<mesh
+			  filename="package://${mesh_path}/hand.dae" scale="${scale} ${scale} ${scale}"/>
+		  </geometry>
+		</visual>
+		<collision name="hand"> <!--it is necessary to name the collision to be able to use the contact sensor-->
+		  <geometry>
+			<mesh
+			  filename="package://${mesh_path}/hand_col.STL" scale="${scale} ${scale} ${scale}"/>
+		  </geometry>
+		</collision>
+	  </link> 
+	  
+	</xacro:macro>
+</robot>

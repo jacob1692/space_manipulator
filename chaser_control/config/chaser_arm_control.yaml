@@ -1,0 +1,50 @@
+chaser: # namespace --> in this case the ns is implemented as <group ns="chaser"> in space_set.launch.xml
+ arm_joint_controller:
+  type: "effort_controllers/JointTrajectoryController"
+  joints:
+   - j1
+   - j2
+   - j3
+   - j4
+   - j5
+   - j6
+   #- d1
+  gains:
+  # these values were tuned by hand, with the base fixed and supposing a force in the COG of arm3_1 equivalent of a mass of 255kg under an accelation of 1g.
+   j1:
+    {p: 0.0 , i: 0.0, d: 0.0, i_clamp: 0.0}
+   j2:
+    {p: 0.0 , i: 0.0, d: 0.0, i_clamp: 0.0}
+   #j2 requires more d (viscous damping), given that the first few joints are the onres that ought support more weight
+   j3:
+    {p: 0.0 , i: 0.0, d: 0.0, i_clamp: 0.0}
+   j4:
+    {p: 0.0 , i: 0.0, d: 0.0, i_clamp: 0.0}
+   #j3 and j5 require less P compared to the others, given that the moment of inertia along the rotation axis is lower than for the other joints
+   j5:
+    {p: 0.0 , i: 0.0, d: 0.0, i_clamp: 0.0}
+   j6:
+    {p: 0.0 , i: 0.0, d: 0.0, i_clamp: 0.0}
+#d1:
+#dummy PID for compliant wrist (i.e underactuated), used in order to broadcast its state}
+#{p: 0.0 , i: 0.0, d: 0.0, i_clamp: 0.0} 
+#{p: 0.0 , i: 0.0, d: 0.0, i_clamp: 0.0} THIS P CONTROLLER IS EQUIVALENT TO A SPRING WITH STIFFNESS 530 AND STIFFNESS 1.4, but it is not implemented since the the sampling period of the controller is put to trial
+
+#  j1:
+#    {p: 1000.0 , i: 0.01, d: 0.1, i_clamp: 1000}
+#   j2:
+#    {p: 1000.0 , i: 0.01, d: 10.0, i_clamp: 1000}
+   #j2 requires more d (viscous damping), given that the first few joints are the onres that ought support more weight
+#   j3:
+#    {p: 100.0 , i: 0.01, d: 0.1, i_clamp: 1000}
+#   j4:
+#    {p: 1000.0 , i: 0.01, d: 0.1, i_clamp: 1000}
+   #j3 and j5 require less P compared to the others, given that the moment of inertia along the rotation axis is lower than for the other joints
+#   j5:
+#    {p: 100.0 , i: 0.01, d: 0.1, i_clamp: 1000}
+#   j6:
+#    {p: 1000.0 , i: 0.01, d: 0.1, i_clamp: 1000}
+#   #d1:
+    #dummy PID for compliant wrist (i.e underactuated), used in order to broadcast its state
+#    #{p: 0.0 , i: 0.0, d: 0.0, i_clamp: 0.0} 
+#    #{p: 530.0 , i: 0, d: 0, i_clamp: 0} THIS P CONTROLLER IS EQUIVALENT TO A SPRING WITH STIFFNESS 530 AND STIFFNESS 1.4, but it is not implemented since the the sampling period of the controller is put to trial

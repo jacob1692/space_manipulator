@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="target">
+	
+	<xacro:arg name="joystick_c" default="false"/>
+	
+	<xacro:property name="joystick" value="$(arg joystick_c)"/>
+	
+  <link
+	name="base_footprint"/>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="255" />
+      <inertia
+        ixx="3.825"
+        ixy="0"
+        ixz="0"
+        iyy="3.825"
+        iyz="0"
+        izz="3.825" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 -1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://target_description/meshes/target_vis.dae" 
+          scale="0.99 0.99 1"/> <!--This scale was to cover up the panels"-->
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 -1.5707963267949" />
+      <geometry>
+        <!--mesh
+          filename="package://target_description/meshes/target.STL" /-->
+          <box size="0.300 0.300 0.300"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="base_link">
+		<mu1>0.112</mu1>
+		<mu2>0.112</mu2>
+		<kp>1000000</kp>
+		<kd>1</kd>
+		<!--selfCollide>true</selfCollide-->
+		<!--maxVel>0.001</maxVel-->
+		<!--minDepth>0.001</minDepth-->
+  </gazebo>
+  <gazebo>
+		<plugin name="alwaysenable" filename="libalwaysenable.so"/>
+  </gazebo>
+	<!-- POSE 3D GROUND TRUTH PLUGIN-->
+	<gazebo>
+	  <plugin name="ground_truth" filename="libgazebo_ros_p3d.so">
+		<frameName>map</frameName>
+		<bodyName>base_link</bodyName>
+		<topicName>/target/odom</topicName>
+		<updateRate>30</updateRate>
+	  </plugin>
+	</gazebo>
+	
+	<gazebo>
+		  <plugin name="f3d_ground_truth" filename="libgazebo_ros_f3d_rel.so">
+			<frameName>base_link</frameName> <!--map-->
+			<bodyName>base_link</bodyName>
+			<topicName>/target/f3d</topicName>
+			<updateRate>50</updateRate>
+		  </plugin>
+	</gazebo>
+	
+	<gazebo>
+	  <plugin name="targetspd" filename="libtargetspd.so"/>
+	</gazebo>
+	<xacro:if value="${joystick =='true'}">
+		<gazebo>
+				<plugin name="GazeboTargetM" filename="libtargetm.so">
+					<robotNamespace>target</robotNamespace>
+					<commandTopic>/joy</commandTopic>
+					<joyBEnableCin>0</joyBEnableCin>
+				</plugin>
+		</gazebo>
+	</xacro:if>
+   <!-- Attach model to gazebo-->
+  <joint name="base_joint" type="fixed">	
+		<parent link="base_footprint"/>
+		<child link="base_link"/>
+  </joint>
+  
+</robot>

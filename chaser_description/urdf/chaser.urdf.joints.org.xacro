@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">	
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.urdf.joints.transmission.xacro"/>
+	<xacro:property name="damp" value="0.2"/>
+	<xacro:property name="frict" value="0.5"/>
+	<xacro:property name="calibration_edge" value="0.0"/>
+	<xacro:property name="k_vel" value="10"/>
+	<xacro:property name="k_pos" value="15"/>
+	<xacro:property name="effort_t" value="10000000.0"/> <!--for the matter of test 1e7-->
+	<xacro:property name="vel_t" value="1000.0"/> <!--scaling factor for maximum velocity - for testing purposes-->
+	<xacro:property name="soft_limit_r" value="0.9"/>
+	<xacro:property name="motor_reduction" value="1"/>
+	<!--xacro:property name="up_lim_j1" value="6.1087"/--> <!--3.2289 symmetric-->
+	<!--xacro:property name="lw_lim_j2" value="-0.69341"/--> <!-- -0.59341 -->
+	<!--xacro:property name="up_lim_j2" value="2.3642"/--> <!-- 2.1642 -->
+	<!--xacro:property name="lw_lim_j4" value="-4.311"/>
+	<xacro:property name="up_lim_j4" value="1.1694"/> 
+	<xacro:property name="up_lim_j3" value="6.1087"/--> <!--symmetric and equal to j5 -->
+	<!--xacro:property name="lw_lim_j6" value="-2.0595"/>
+	<xacro:property name="up_lim_j6" value="3.6303"/>
+	<xacro:property name="stroke_d1" value="-0.032"/--> <!--value="-0.032"-->
+	
+	
+	<!-- Definition of variables -->
+	
+	<xacro:property name="deg2rad" value="${pi/180}" />
+	
+	
+	<xacro:macro name="joints_create">
+	 <joint
+		name="j1"
+		type="revolute"> <!--revolute-->
+		<origin
+		  xyz="0.103238 -0.0 -0.0"
+		  rpy="-0.0 ${90*deg2rad} -0.0" />
+		<parent
+		  link="base_link" />
+		<child
+		  link="arm0" />
+		<axis
+		  xyz="0 0 1" />
+		<limit
+		  lower="-${up_lim_j1}"
+		  upper="${up_lim_j1}"
+		  effort="10"
+		  velocity="${2.4435*vel_t}" />  
+		<calibration 
+			rising = "${calibration_edge}"/>  
+		<dynamics
+			damping="${damp}"
+			friction="${frict}"/>	
+		<safety_controller 
+			k_velocity="${k_vel}" 
+			k_position="${k_pos}" 
+			soft_lower_limit="-${soft_limit_r* up_lim_j1}" 
+			soft_upper_limit="${soft_limit_r* up_lim_j1}" />    <!--origin xyz="0.10324 0 0"  rpy="0 1.5708 0" /--> 
+	  </joint>
+	  <xacro:joint_trans name="j1" reduction="${motor_reduction}"/>  
+	  
+	  <joint
+		name="j2"
+		type="revolute">
+		<origin
+		  xyz="0.0 0.0 0.046700"
+		  rpy="${90*deg2rad} ${-45*deg2rad} ${-180*deg2rad}" />
+		<parent
+		  link="arm0" />
+		<child
+		  link="arm1" />
+		<axis xyz="0 0 1" />
+		<limit
+		  lower="${lw_lim_j2}"
+		  upper="${up_lim_j2}"
+		  effort="${effort_t}"
+		  velocity="${2.1991*vel_t}" />
+		<calibration 
+			rising = "${calibration_edge}"/>  
+		<dynamics
+			damping="${damp}"
+			friction="${frict}"/>	
+		<safety_controller 
+			k_velocity="${k_vel}" 
+			k_position="${k_pos}" 
+			soft_lower_limit="${soft_limit_r* lw_lim_j2}" 
+			soft_upper_limit="${soft_limit_r* up_lim_j2}" />  <!--0 0 0.0467" /-->
+	  </joint>
+	  <xacro:joint_trans name="j2" reduction="${motor_reduction}"/>  
+	  
+	   <joint
+		name="j3"
+		type="revolute">
+		<origin
+		  xyz="0.021000 -0.0 -0.0"
+		  rpy="${90*deg2rad} -0.0 ${90*deg2rad}" />
+		<parent
+		  link="arm1" />
+		<child
+		  link="arm1_1" />
+		<axis  xyz="0 0 1" />
+		<limit
+		  lower="-${up_lim_j3}" 
+		  upper="${up_lim_j3}"
+		  effort="${effort_t}"
+		  velocity="${4.5379*vel_t}"/> <!--symmetric-->
+		<calibration 
+			rising = "${calibration_edge}"/>  
+		<dynamics
+			damping="${damp}"
+			friction="${frict}"/>	
+		<safety_controller 
+			k_velocity="${k_vel}" 
+			k_position="${k_pos}" 
+			soft_lower_limit="-${soft_limit_r*up_lim_j3}" 
+			soft_upper_limit="${soft_limit_r*up_lim_j3}" />  <!--symmetric-->   
+	  </joint>
+	  <xacro:joint_trans name="j3" reduction="${motor_reduction}"/>  
+	  
+	  <joint
+		name="j4"
+		type="revolute">
+	   <origin
+		  xyz="-0.0 0.021000 0.145667"
+		  rpy="${-90*deg2rad} -0.0 -0.0" />
+		<parent
+		  link="arm1_1" />
+		<child
+		  link="arm2" />
+		<axis
+		  xyz="0 0 1" />
+		<limit
+		  lower="${lw_lim_j4}"
+		  upper="${up_lim_j4}"
+		  effort="${effort_t}"
+		  velocity="${2.1991*vel_t}" />
+		<calibration 
+			rising = "${calibration_edge}"/>  
+		<dynamics
+			damping="${damp}"
+			friction="${frict}"/>	
+		<safety_controller 
+			k_velocity="${k_vel}" 
+			k_position="${k_pos}" 
+			soft_lower_limit="${soft_limit_r* lw_lim_j4}" 
+			soft_upper_limit="${soft_limit_r* up_lim_j4}" />     
+	  </joint>
+	  <xacro:joint_trans name="j4" reduction="${motor_reduction}"/>  
+	  
+	  <joint
+		name="j5"
+		type="revolute">
+		<origin
+		  xyz="0.021000 -0.0 0.018000"
+		  rpy="${90*deg2rad} -0.0 ${90*deg2rad}" />
+		<parent
+		  link="arm2" />
+		<child
+		  link="arm2_1" />
+		<axis
+		  xyz="0 0 1" />
+		<limit
+		  lower="-${up_lim_j3}" 
+		  upper="${up_lim_j3}"
+		  effort="${effort_t}"
+		  velocity="${4.5379*vel_t}"/> <!--symmetric-->
+		<calibration 
+			rising = "${calibration_edge}"/>  
+		<dynamics
+			damping="${damp}"
+			friction="${frict}"/>	
+		<safety_controller 
+			k_velocity="${k_vel}" 
+			k_position="${k_pos}" 
+			soft_lower_limit="-${soft_limit_r*up_lim_j3}" 
+			soft_upper_limit="${soft_limit_r*up_lim_j3}" />  <!--symmetric-->   
+	  </joint>
+	  <xacro:joint_trans name="j5" reduction="${motor_reduction}"/>  
+	  
+	  <joint
+		name="j6"
+		type="revolute">
+		<origin
+		  xyz="0 -0.021000 0.145667"
+		  rpy="${90*deg2rad} ${-45*deg2rad} ${-180*deg2rad}" />
+		<parent
+		  link="arm2_1" />
+		<child
+		  link="arm3" />
+		<axis
+		  xyz="0 0 1" />
+		<limit
+		  lower="${lw_lim_j6}"
+		  upper="${up_lim_j6}"
+		  effort="${effort_t}"
+		  velocity="${4.2761*vel_t}" />
+		<calibration 
+			rising = "${calibration_edge}"/>  
+		<dynamics
+			damping="${damp}"
+			friction="${frict}"/>	
+		<safety_controller 
+			k_velocity="${k_vel}" 
+			k_position="${k_pos}" 
+			soft_lower_limit="${soft_limit_r* lw_lim_j6}" 
+			soft_upper_limit="${soft_limit_r* up_lim_j6}" />     
+	  </joint>
+	  <xacro:joint_trans name="j6" reduction="${motor_reduction}"/>  
+	   
+	  <joint
+		name="d1"
+		type="prismatic">
+		<origin
+		  xyz="0.137170 -0.0 -0.018"
+		  rpy="${90*deg2rad} -0.0 ${90*deg2rad}" /> <!-- xyz="0 0 0.12"   w.ft.sensor. "0 0 0.145"-->
+		<parent
+		  link="arm3" />
+		<child
+		  link="hand" />
+		<axis
+		  xyz="0 0 1" />
+		<limit
+		  lower="${stroke_d1}"
+		  upper="0.00"
+		  effort="${effort_t}"
+		  velocity="${2.5*vel_t}" /><!--${stroke_d1}-->
+		<!--dynamics are implemented implemented in a plugin-->   
+	  </joint>
+	  <xacro:joint_trans name="d1" reduction="${motor_reduction}"/> <!--dummy effort joint interface-->  
+	  	  
+	</xacro:macro>
+</robot>

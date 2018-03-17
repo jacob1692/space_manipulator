@@ -1,0 +1,26 @@
+<?xml version="1.0">
+<sdf version = "1.4">
+	<model name="earth">
+		<static>true</static>
+		<allow_auto_disable>true</allow_auto_disable>
+		<link name="plane">
+			<pose> 0.0 2.0 1.5 1.5 0.0 0.0 </pose>
+			<visual name="visual">
+				<cast_shadows>false</cast_shadows>
+				<geometry>
+					<plane>
+						<normal>0 0 1</normal>
+						<size>250 250</size>
+					</plane>
+				</geometry>
+				<material> 
+					<script>
+						<uri>model://earth/materials/scripts/space.material</uri>
+						<name>Landsc/Earth</name>	
+					</script>
+					<emissive>1.0 1.0 1.0 1.0</emissive>
+				</material>
+			</visual>		
+		</link>
+	</model>
+</sdf>

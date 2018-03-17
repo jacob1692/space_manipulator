@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="chaser">
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.urdf.base.xacro"/>
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.urdf.links.xacro"/>
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.urdf.joints.xacro"/>
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.urdf.camera.xacro"/>
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.gazebo.xacro"/>
+	
+	<xacro:arg name="standalone_c" default="true"/>
+	<xacro:arg name="joystick_c" default="true"/>
+	<xacro:arg name="simple_" default="false"/>
+	
+
+ <xacro:base_create/>
+ <xacro:arm_create/>
+ <xacro:joints_create/>
+ <xacro:camera_urdf radius_xy="0.001"  length_z="0.0005" posx="0.13550" posy="-0.02" posz="-0.018" rotx="1.5707963267949" roty="0" rotz="0" parent="arm3"/> <!--- posx="0.13717" roty="-1.571"-->
+ 
+ <link	name="base_footprint"/>
+  <!-- Attach the model to Gazebo-->
+  <joint name="base_joint" type="fixed">
+		<!--parent link="base_footprint"/-->
+		<parent link="base_footprint"/>
+		<child link="base_link"/> <!--base_footprint: still mobile world: fixed -->
+  </joint>
+  <xacro:integration_gazebo joystick_g="$(arg joystick_c)" standalone_g="$(arg standalone_c)" simple="$(arg simple_)"/>
+  
+
+  
+</robot>
+
+
+<!--parent link="world"/-->

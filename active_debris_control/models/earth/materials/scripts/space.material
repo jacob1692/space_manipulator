@@ -1,0 +1,19 @@
+material Landsc/Earth
+{
+	technique
+	{
+		pass
+		{
+			ambient 1.0 1.0 1.0 1.0
+			diffuse 1.0 1.0 1.0 1.0
+			specular 0.0 0.0 0.0 1.0 0.5
+			emisive 1.0 1.0 1.0 1.0
+		   	texture_unit	
+		   	{
+				texture ../textures/earth_wiki.png
+				filtering trilinear
+		   	}
+		}
+	}
+}	
+			

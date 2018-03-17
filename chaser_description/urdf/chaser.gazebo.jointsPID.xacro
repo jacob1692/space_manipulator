@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro"> 
+	<xacro:macro name="jointsPID">
+		<gazebo>
+			<plugin name="GazeboJointsPID" filename="libgazebo_joints_pid.so">
+				<robotNamespace>chaser</robotNamespace>
+				<commandTopic>/joy</commandTopic>
+				<!-- PID PARAMETERS -->
+				<j1KpKdKi>1000 0.01 100 1000</j1KpKdKi>
+				<j2KpKdKi>100 0.01 100 1000</j2KpKdKi> 
+				<j3KpKdKi>100 0.01 100  1000</j3KpKdKi>
+				<j4KpKdKi>1000 0.01 100 1000</j4KpKdKi>
+				<j5KpKdKi>100 0.01 100 1000</j5KpKdKi>
+				<j6KpKdKi>1000 0.01 100 1000</j6KpKdKi>
+				<scale>0.02</scale> <!-- scale of the K's -->
+				<errorLimit>10</errorLimit>
+				<!-- JOYSTICK BUTTONS AND AXES MAPPING -->
+				<joyBAxisChangeCtrl1>2</joyBAxisChangeCtrl1>
+			</plugin>
+		</gazebo>
+	</xacro:macro>
+</robot>

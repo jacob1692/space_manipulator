@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default"> 		
+    <gui fullscreen=false>
+		<camera name="user_default">
+			<pose> 0.0 -1.5 0.3 0.0 0.0 1.57</pose>
+			<projection_type>perspective</projection_type>
+			<!--track_visual>
+				<name>chaser</name>
+				<min_dist>20</min_dist>
+				<max_dist>100</max_dist>
+				<static>true</static>
+				<inherit_yaw>true</inherit_yaw>
+			</track_visual-->
+		</camera>
+    </gui>
+    <!-- Star Universe -->
+    <scene>
+      <ambient>0.0 0.0 0.0 1.0</ambient>
+      <background>0.0 0.0 0.0 1</background>
+      <grid>false</grid>
+      <origin_visual>false</origin_visual>
+      <!--sky>
+        <time>13</time>
+        <sunrise>12</sunrise>
+        <sunset>12</sunset>
+        <clouds>
+          <humidity>0</humidity>
+        </clouds>
+      </sky-->
+      <shadows>0</shadows> <!--  0 : improves performance -->
+    </scene> 
+    <light name='sun' type="directional" >
+      <cast_shadows>1</cast_shadows>
+      <pose>1 0 10 0 0 0</pose>
+      <diffuse>0.9 0.9 0.9 1</diffuse>
+      <specular>0.0 0.0 0.0 1</specular>
+      <attenuation>
+        <range>100</range>
+        <constant>1</constant>
+      </attenuation>
+      <direction>-1.0 1.0 -1.0</direction>
+    </light>
+    <!--Physics-->
+   
+     <physics type="ode">
+	  <gravity>0.0 0.0 0.0</gravity>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+      <max_contacts>1</max_contacts>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>50</iters>
+          <sor>1.4</sor>
+        </solver>
+        <constraints>
+          <cfm>0</cfm>
+          <erp>0.01</erp>
+          <contact_max_correcting_vel>0.0</contact_max_correcting_vel>
+          <contact_surface_layer>0.000</contact_surface_layer>
+        </constraints>
+      </ode>
+    </physics> 
+    <!--include>
+      <uri>model://target</uri>
+      <name>target</name>
+      <pose>0.3 0 0.3 0 0 0</pose>
+    </include--> 
+    <!--include>
+      <uri>model://earth</uri>
+      <name>earth</name>
+      <pose>0 3999 0 0 0 0</pose>
+    </include--> 
+  </world>
+</sdf>

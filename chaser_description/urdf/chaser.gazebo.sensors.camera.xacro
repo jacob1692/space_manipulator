@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	
+	<xacro:macro name="camera_gazebo" params="upd_rate im_width im_height">
+		<gazebo reference="camera_link">
+			<sensor type="camera" name="camera1">
+				<update_rate>${upd_rate}</update_rate> <!--30hz-->
+				<camera name="head">
+					<horizontal_fov>1.3962634</horizontal_fov>
+					<image>
+						<width>${im_width}</width>   <!--800-->
+						<height>${im_height}</height> <!--800-->
+						<format>R8G8B8</format>
+					</image>
+					<clip>
+						<near>0.01</near>
+						<far>300</far>
+					</clip>
+					<noise>
+						<type>gaussian</type>
+							<mean>0.0</mean>
+						<stddev>0.007</stddev>
+					</noise>
+				</camera>
+					
+				<plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+					<alwaysOn>true</alwaysOn>
+					<updateRate>0.0</updateRate>
+					<cameraName>chaser/camera1</cameraName>
+					<imageTopicName>/chaser/image_raw</imageTopicName>
+					<cameraInfoTopicName>/chaser/camera_info</cameraInfoTopicName>
+					<frameName>camera_link</frameName>
+					<hackBaseline>0.07</hackBaseline>
+					<distortionK1>0.0</distortionK1>
+					<distortionK2>0.0</distortionK2>
+					<distortionK3>0.0</distortionK3>
+					<distortionT1>0.0</distortionT1>
+					<distortionT2>0.0</distortionT2>
+				</plugin>
+			</sensor>
+		</gazebo>
+	</xacro:macro>
+</robot>

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro"> 
+
+	<xacro:macro name="thrusters_3D">
+		<gazebo>
+			<plugin name="thruster_3D_controller" filename="libgazebo_ros_3D_thruster.so">
+				<robotNamespace>chaser</robotNamespace>
+				<thrustersTFtopic>/chaser/thrustersFT</thrustersTFtopic>
+				<publisherRate>30</publisherRate>
+				<commandTopic>/joy</commandTopic>
+				<robotBaseFrame>base_footprint</robotBaseFrame>
+				<velocityXYZLimit>1</velocityXYZLimit> <!--m/s. Limit in the GUI for Steering. This limit is for the stop gesture -->
+				<nominalThrust>10</nominalThrust> <!-- N -->
+				<nominalReactionTorque>6</nominalReactionTorque>  <!-- Nm -->
+				<velocityXYProportionalGain>500</velocityXYProportionalGain>
+				<velocityXYIntegralGain>20</velocityXYIntegralGain>
+				<velocityZProportionalGain>500</velocityZProportionalGain>
+				<velocityZIntegralGain>20</velocityZIntegralGain>
+				<rollpitchposProportionalGain>70</rollpitchposProportionalGain>
+				<rollpitchposDifferentialGain>30</rollpitchposDifferentialGain>
+				<yawposProportionalGain>70</yawposProportionalGain>
+				<yawposDifferentialGain>30</yawposDifferentialGain>
+				<rollpitchvelProportionalGain>90</rollpitchvelProportionalGain>
+				<rollpitchvelDifferentialGain>1</rollpitchvelDifferentialGain>
+				<yawvelProportionalGain>90</yawvelProportionalGain>
+				<yawvelDifferentialGain>1</yawvelDifferentialGain>
+				<distTrusterBaseCOM>0.15</distTrusterBaseCOM>
+				
+				<yawposLimit>10</yawposLimit>
+				<rollpitchposLimit>10</rollpitchposLimit>
+				
+				<!-- JOYSTICK BUTTONS AND AXES MAPPING -->
+				
+				<joyAxisXLinear>1</joyAxisXLinear>
+				<joyAxisYLinear>0</joyAxisYLinear>
+				<joyAxisZLinear>7</joyAxisZLinear>
+				
+				<joyAxisXAngular>6</joyAxisXAngular>
+				<joyAxisYAngular>4</joyAxisYAngular>
+				<joyAxisZAngular>3</joyAxisZAngular>
+				
+				<joyButtonStopX>2</joyButtonStopX>
+				<joyButtonStopY>3</joyButtonStopY>
+				<joyButtonStopZ>1</joyButtonStopZ>
+				
+				<joyButtonEnable>8</joyButtonEnable>
+				<joyButtonReset>7</joyButtonReset>
+				
+				<joyBAxisStopOri>5</joyBAxisStopOri>
+				
+				<joyButtonAngleControl>5</joyButtonAngleControl> <!-- Angular Position Control vs Angular Velocity Control -->
+ 				<joyButtonWorldRotation>6</joyButtonWorldRotation> <!-- Absolute vs Relative Angular Position Control -->
+ 				
+ 				<joyScaleAxisAngular>1</joyScaleAxisAngular>
+ 				<joyScaleAxisLinear>1</joyScaleAxisLinear>
+ 				
+ 				
+				
+			</plugin>
+		</gazebo>
+	</xacro:macro>
+</robot>
+	
+
+
+<!--yawposProportionalGain>50</yawposProportionalGain>
+				<yawposDifferentialGain>20</yawposDifferentialGain>
+				<rollpitchvelProportionalGain>10</rollpitchvelProportionalGain>
+				<rollpitchvelDifferentialGain>1</rollpitchvelDifferentialGain>
+				<yawvelProportionalGain>10</yawvelProportionalGain>
+				<yawvelDifferentialGain>1</yawvelDifferentialGain-->

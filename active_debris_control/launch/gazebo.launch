@@ -1,0 +1,28 @@
+<launch>
+		<arg name="paused" default="false"/>
+		<arg name="gui" default="true"/>
+		<arg name="headless" default="false"/>
+		<arg name="debug" default="false"/>	
+		<arg name="use_sim_time" default="true"/>
+		<arg name="joystick" default="false"/>
+		<arg name="simple" default="false"/>
+		<arg name="roscontrol" default="false"/>
+		
+	<!--START-WORLD-->
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" value="$(find active_debris_control)/worlds/space.world"/>
+		<arg name="debug" value="$(arg debug)" />
+		<arg name="gui" value="$(arg gui)" />
+		<arg name="paused" value="$(arg paused)"/>
+		<arg name="use_sim_time" value="$(arg use_sim_time)"/>
+		<arg name="headless" value="$(arg headless)"/>			
+	</include>
+	<!--INCLUDE-ROBOTS-->
+	<include file="$(find active_debris_control)/launch/includes/space_set.launch.xml">
+		<arg name="joystick" value="$(arg joystick)"/>
+		<arg name="simple" value="$(arg simple)"/>
+		<arg name="roscontrol" value="$(arg roscontrol)"/>
+	</include>
+	<!--node name="contact_listener" pkg="active_debris_control" type="contact_data_sub.py" respawn="true"/-->
+	<node name="relative_velocity" pkg="active_debris_control" type="relative_vel.py" respawn="true"/>
+</launch>

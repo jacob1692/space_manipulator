@@ -1,0 +1,21 @@
+<launch>
+    <arg name="simple" default="false"/>
+	<arg name="standalone" default="true"/>	
+	<arg name="joystick" default="false"/>
+	<arg name="roscontrol" default="false"/>
+	
+	
+	<arg name="model" default="$(find chaser_description)/urdf/chaser.create.urdf.xacro"/> 
+	
+	<param name="robot_description" command="$(find xacro)/xacro $(arg model) simple_:=$(arg simple) standalone_c:=$(arg standalone) joystick_c:=$(arg joystick)  --xacro-ns --inorder  " />
+	<group if="$(arg standalone)">		
+		<include file="$(find chaser_description)/launch/chaser.gazebo.launch.xml" /> <!-- brief: launch gazebo only with the chaser -->
+	</group>
+	<group if="$(arg roscontrol)">
+		<include file="$(find chaser_control)/launch/chaser_arm_controller.launch.xml" />
+		<include file="$(find chaser_control)/launch/chaser_joint_state_controller.launch.xml" />
+	</group>
+	<group if="$(arg joystick)">
+			<include file="$(find chaser_control)/launch/chaser_teleop.launch.xml" />	
+	</group>
+</launch>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro"> 
+
+	<xacro:macro name="p3d_gazebo" params="update_rate">
+		<gazebo>
+		  <plugin name="p3d_ground_truth" filename="libgazebo_ros_p3d.so">
+			<frameName>world</frameName> <!-- map -->
+			<bodyName>base_link</bodyName>
+			<topicName>/chaser/odom</topicName>
+			<updateRate>${update_rate}</updateRate>
+		  </plugin>
+		</gazebo>>
+	</xacro:macro>
+</robot>
+	

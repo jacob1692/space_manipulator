@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	
+	<xacro:macro name="camera_urdf" params="radius_xy length_z posx posy posz rotx roty rotz parent">
+		<joint name="camera_joint" type="fixed">
+			<axis xyz="0 1 0" />
+			<origin xyz="${posx} ${posy} ${posz}" rpy="${rotx} ${roty} ${rotz}"/>
+			<parent link="${parent}"/>
+			<child link="camera_link"/>
+		</joint>
+		
+		<link name="camera_link">
+			<collision name="camera_link_collision">
+				<origin xyz="0 0 0" rpy="0 ${rotx} 0"/>
+				<geometry>
+					<cylinder radius="${radius_xy}" length="${length_z}"/>
+				</geometry>
+			</collision>
+			<visual name="camera_link_visual">
+				<origin xyz="0 0 0" rpy="0 ${rotx} 0"/>
+				<geometry>
+					<cylinder radius="${radius_xy}" length="${length_z}"/>
+				</geometry>
+				<!--geometry  THIS IS THE VERSION OF THE CAMERA APPART FROM ARM 3> 
+					<mesh filename="package://chaser_description/models/robot1.0/meshes/camera.dae"/>
+				</geometry-->				
+			</visual>
+
+			<inertial>
+				<mass value="1e-5" />
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<inertia 
+					ixx="1e-6"
+					ixy="0"
+					ixz="0"
+					iyy="1e-6"
+					iyz="0"
+					izz="1e-6"/>
+			</inertial>
+		</link>
+	</xacro:macro>
+</robot>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot  xmlns:xacro="http://ros.org/wiki/xacro">
+	
+	<xacro:macro name="ft_sensor" params="name update_rate">
+	  <gazebo>
+		<plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+			<updateRate>${update_rate}</updateRate>
+			<topicName>chaser/${name}_force_torque</topicName>
+			<jointName>${name}</jointName>
+			<gaussianNoise>0</gaussianNoise>
+			<!--frame: the frame is always CHILD in case of this plugin-->
+		</plugin>
+	  </gazebo>
+	</xacro:macro>	
+
+	
+</robot>
+

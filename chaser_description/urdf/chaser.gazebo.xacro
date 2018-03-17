@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	
+	<!--LOAD MACROS XACROS-->
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.gazebo.links.xacro"/>
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.gazebo.joints.xacro"/>
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.gazebo.thrusters.xacro"/>
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.gazebo.spd.xacro"/>
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.gazebo.sensors.contact.xacro"/>
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.gazebo.sensors.ft_sensor.xacro"/>
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.gazebo.sensors.p3d.xacro"/>
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.gazebo.sensors.f3d.xacro"/>
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.gazebo.sensors.imu.xacro"/>
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.gazebo.sensors.camera.xacro"/>
+	<xacro:include filename="$(find chaser_description)/urdf/chaser.gazebo.jointsPID.xacro"/>
+
+	
+	
+	<!--FRICTION AND CONTACT PARAMETERS FOR ARMS-->
+	<xacro:property name="MU1" value="0.112"/>
+	<xacro:property name="MU2" value="0.112"/>
+	<xacro:property name="KP_CONT" value="1000000"/> <!-- default value in Gazebo -->
+	<xacro:property name="KD_CONT" value="1"/>
+	
+	<!--SENSORS PARAMETERS-->
+	<xacro:property name="contact_upd_rate" value="0"/> 
+	<xacro:property name="force_torque_upd_rate" value="30"/> <!-- 0: maximum frequency -->
+	<xacro:property name="p3d_upd_rate" value="30"/>
+	<xacro:property name="imu_upd_rate" value="30"/>
+	<xacro:property name="f3d_upd_rate" value="30"/>
+	
+	<!--MAIN GAZEBO XACRO MACRO-->
+	<xacro:macro name="integration_gazebo" params=" joystick_g simple standalone_g  ">
+	
+		<!--ROS CONTROL PLUGIN-->
+		<gazebo>
+			<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+				<robotNamespace>/chaser</robotNamespace>
+				<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+			</plugin>
+		</gazebo>
+		
+	
+		<!-- ATTITUDE CONTROL + VELOCITY COMMAND PLUGIN-->
+		<xacro:if value="${joystick_g!='false'}"> 
+			<xacro:thrusters_3D/>
+		</xacro:if>
+	
+		<!--GAZEBO PHYSICS IN LINKS-->
+		<xacro:gazebo_links name="base_link" mu1="${MU1}" mu2="${MU2}" kp_cont="${KP_CONT}" kd_cont="${KD_CONT}"/>
+		<xacro:gazebo_links name="arm0" mu1="${MU1}" mu2="${MU2}" kp_cont="${KP_CONT}" kd_cont="${KD_CONT}"/>
+		<xacro:gazebo_links name="arm1_1" mu1="${MU1}" mu2="${MU2}" kp_cont="${KP_CONT}" kd_cont="${KD_CONT}"/>
+		<xacro:gazebo_links name="arm1" mu1="${MU1}" mu2="${MU2}" kp_cont="${KP_CONT}" kd_cont="${KD_CONT}"/>
+		<xacro:gazebo_links name="arm2" mu1="${MU1}" mu2="${MU2}" kp_cont="${KP_CONT}" kd_cont="${KD_CONT}"/>	
+		<xacro:gazebo_links name="arm2_1" mu1="${MU1}" mu2="${MU2}" kp_cont="${KP_CONT}" kd_cont="${KD_CONT}"/>
+		<xacro:gazebo_links name="arm3" mu1="${MU1}" mu2="${MU2}" kp_cont="${KP_CONT}" kd_cont="${KD_CONT}"/>	
+		<xacro:gazebo_links name="hand" mu1="${MU1}" mu2="${MU2}" kp_cont="${KP_CONT}" kd_cont="${KD_CONT}"/> 
+		<!--GAZEBO PHYSICS IN JOINTS-->
+		
+
+		<!--gazebo reference="base_link">
+			<selfCollide>true</selfCollide>
+		</gazebo-->
+				
+		<!--gazebo reference="arm0">
+			<selfCollide>true</selfCollide>
+		</gazebo>
+		<gazebo reference="arm1">
+			<selfCollide>true</selfCollide>
+		</gazebo>
+		
+		<gazebo reference="arm1_1">
+			<selfCollide>true</selfCollide>
+		</gazebo>
+		
+		<gazebo reference="arm2">
+			<selfCollide>true</selfCollide>
+		</gazebo>	
+		<gazebo reference="arm2_1">
+			<selfCollide>true</selfCollide>
+		</gazebo>
+		
+		<gazebo reference="arm3">
+			<selfCollide>true</selfCollide>
+		</gazebo-->
+		
+		<!--gazebo reference="hand">
+			<selfCollide>true</selfCollide>
+		</gazebo-->
+		
+		<xacro:gazebo_joints name="j1"/>
+		<xacro:gazebo_joints name="j2"/>
+		<xacro:gazebo_joints name="j3"/>
+		<xacro:gazebo_joints name="j4"/>
+		<xacro:gazebo_joints name="j5"/>
+		<xacro:gazebo_joints name="j6"/>
+		<xacro:gazebo_joints name="d1"/>
+		
+		<!--PLUGIN FOR COMPLIANT WRIST (SPRING) -->
+		<gazebo>
+			<plugin name="compliant_wrist" filename="libcompliant_wrist.so">
+				<stiffnessW>900</stiffnessW>
+				<dampingW>6</dampingW>
+				<referenceW>0.0</referenceW>
+				<Axis>9</Axis>
+			</plugin>
+		</gazebo>
+
+			<!--GAZEBO  SPACE DYN INTERFACE-->
+		<!--xacro:spacedyn_chaser standalone_spd="${standalone_g}" /-->
+		
+	
+		<!--CONTACT SENSOR PLUGIN-->
+		<!--xacro:contact_sensor name="hand" update_rate="${contact_upd_rate}"/-->
+		
+		<!-- POSE 3D GROUND TRUTH BASE LINK PLUGIN-->
+			<xacro:p3d_gazebo update_rate="${p3d_upd_rate}"/>
+		
+		<xacro:if value="${simple!='true'}"> <!-- simple_g is a group of arguments called simple that mean that the robot will be launched without too many sensors-->
+			<!-- FORCE 3D GROUND TRUTH BASE_LINK PLUGIN-->
+			<xacro:f3d_gazebo update_rate="${f3d_upd_rate}"/>
+			
+			<!-- IMU PLUGIN-->
+			<!--xacro:imu_gazebo update_rate="${imu_upd_rate}"/-->
+			
+			<!-- BUILT-IN CAMERA PLUGIN-->
+			<!--xacro:camera_gazebo upd_rate="30" im_width="300" im_height="300"/-->  <!--im_width="800" im_height="800" -->
+		
+			<!--FORCE TORQUE FOR JOINT SENSOR PLUGIN-->
+			<!--xacro:ft_sensor name="j1" update_rate="${force_torque_upd_rate}"/> 
+			<xacro:ft_sensor name="j2" update_rate="${force_torque_upd_rate}"/> 	
+			<xacro:ft_sensor name="j3" update_rate="${force_torque_upd_rate}"/> 
+			<xacro:ft_sensor name="j4" update_rate="${force_torque_upd_rate}"/>
+			<xacro:ft_sensor name="j5" update_rate="${force_torque_upd_rate}"/> 
+			<xacro:ft_sensor name="j6" update_rate="${force_torque_upd_rate}"/>  
+			<xacro:ft_sensor name="d1" update_rate="${force_torque_upd_rate}"/--> <!--will always be zero, because of the spring--> 
+			
+		</xacro:if>
+			
+		
+		<xacro:jointsPID/>
+		
+	</xacro:macro>
+	
+</robot>

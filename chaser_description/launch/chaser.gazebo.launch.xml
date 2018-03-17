@@ -1,0 +1,25 @@
+<launch>
+	
+	<arg name="POSE0.X" default="-0.5"/>
+	<arg name="POSE0.Y" default="0"/>
+	<arg name="POSE0.Z" default="0.3"/>
+
+		<arg name="paused" default="false"/>
+		<arg name="use_sim_time" default="true"/>
+		<arg name="gui" default="true"/>
+		<arg name="headless" default="false"/>
+		<arg name="debug" default="false"/>
+		
+		<include file="$(find gazebo_ros)/launch/empty_world.launch">
+			<arg name="world_name" value="$(find chaser_bringup)/worlds/space.world"/>
+			<arg name="debug" value="$(arg debug)" />
+			<arg name="gui" value="$(arg gui)" />
+			<arg name="paused" value="$(arg paused)"/>
+			<arg name="use_sim_time" value="$(arg use_sim_time)"/>
+			<arg name="headless" value="$(arg headless)"/>
+		</include>
+	
+	<!--Spawn the model-->
+	<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+	args="-x $(arg POSE0.X) -y $(arg POSE0.Y) -z $(arg POSE0.Z) -unpause -urdf -param robot_description -model chaser" output="screen" respawn="false" />
+</launch>

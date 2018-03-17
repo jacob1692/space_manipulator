@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro"> 
+	<xacro:macro name="spacedyn_chaser" params="standalone_spd">
+		<gazebo>
+			<plugin name="chaserspd" filename="libchaserspd.so">
+				<withTARGET>${standalone_spd}</withTARGET>
+				<kP>3000 0 0 0 0 3500</kP> <!--diag(4000 0 0 0 0 4000)-->
+				<kD>100 0 0 0 0 100</kD> <!--diag(100 0 0 0 0 100) -->
+				<kI>0 0 3 0 0 0</kI>     <!--diag(0 0 0 0 0 0 0) -->
+				<dampD>1.0</dampD> <!--Desired Damping Ratio [-] -->
+				<ImpDN>0.1</ImpDN> <!--Desired Impulse in the Normal Direction [N.s]-->
+				<!--ImpDN>0.1 0.15 0.20 0.25</ImpDN--> 
+				<tmi>200</tmi> <!-- Desired Impedance Mass in 1D [kg]-->
+				<!--tmi>10.98 11.47 11.97 12.46 </tmi-->
+				<!-- tdi and tki are obtained from the parameter estimation algorithm -->
+				<!-- tdi 659.8 561.1 505.8 470.4 tki=9196 6109 4571 3651 -->
+				<tNd>-0.16 0 0 0 0 0</tNd> <!-- Case1 Reference Position - Attitude [m;rad] -->
+				<!--tNd>-0.16 0 0 0 0 0  -0.16 -0.12 0 0 0 0</tNd--> <!-- Case 2 Reference Position - Attitude [m;rad] -->
+				<tNvd>0 1 0 0 0 0</tNvd> <!-- Reference Position - Attitude Velocity [m/s;rad/s] -->
+				<tNad>0 0 -7.0 0 0 0</tNad> <!-- Reference Position - Attitude Acceleration [m/s2;rad/s2] -->
+				<tRp>-0.15 0 0</tRp> <!-- Case1 -->
+				<!--tRp>-0.15 -0.12 0</tRp--> <!--Case2 -->
+				<Em>0.50</Em> <!-- Estimation Error of Mass-->
+				<!--Em>0.5 2.0</Em-->
+				<EI>0.50</EI> <!-- Estimation Error of Inertia -->
+				<!--EI>0.50 2.0</EI-->
+				<ttest>0.050</ttest><!-- Estimation time of inertia uncertainty [s]-->
+			</plugin>
+		</gazebo>
+	</xacro:macro>
+</robot>

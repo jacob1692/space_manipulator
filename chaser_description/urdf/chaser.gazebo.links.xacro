@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	
+	<xacro:macro name="gazebo_links" params="name mu1 mu2 kp_cont kd_cont ">
+		<gazebo reference="${name}">
+			<mu1>${mu1}</mu1>
+			<mu2>${mu2}</mu2>
+			<kp>${kp_cont}</kp>
+			<kd>${kd_cont}</kd>
+			<!--selfCollide>true</selfCollide-->
+			<!--maxVel>0.01</maxVel>
+			<minDepth>0.003</minDepth-->
+		</gazebo>
+	</xacro:macro>	
+	
+</robot>
+
+<!-- params= " vel_max depth_min" -->

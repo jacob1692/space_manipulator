@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	
+	<xacro:macro name="gazebo_joints" params="name">
+		<gazebo reference="${name}">
+			<!--implicitSpringDamper>1</implicitSpringDamper-->
+			<provideFeedback>1</provideFeedback>
+			<!--stopCfm>0.0</stopCfm--> <!-- Force Mixing Error -->
+			<!--stopErp>0.1</stopErp--> <!-- Error Reduction Parameter -->
+			<!--fudgeFactor>0.5</fudgeFactor-->
+		</gazebo>
+	</xacro:macro>	
+	
+</robot>
+
+<!-- -0.01  5000000 -->
