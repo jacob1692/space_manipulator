@@ -1,0 +1,180 @@
+\documentclass[11pt, twoside, a4paper]{report}
+\usepackage{dirtree} %for the tree enhierachy representation
+\usepackage[english]{babel} %english dictionary
+\usepackage{amsmath,amssymb,calc,bbding} %math tools
+\usepackage{pdfpages} %including PDF pages
+\usepackage{caption} %figures and equations' captions
+\usepackage{epstopdf} %for eps figures
+\usepackage{url}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,
+	showstringspaces=false,
+	commentstyle=\color{red},
+	keywordstyle=\color{blue}
+}
+
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\definecolor{Maroon}{rgb}{0.5,0,0}
+\definecolor{DarkOliveGreen}{rgb}{0,0.5,0}
+\definecolor{olive}{rgb}{0,0.5,0}
+
+% Title Page
+\title{Manual of Gazebo-SpaceDyn Simulation}
+\author{Jacob Hernandez}
+\begin{document}
+\maketitle
+
+\newpage
+
+\begin{abstract}
+\end{abstract}
+
+\chapter{Introduction}
+
+This document intends to serve as a brief description and manual of the tools and routines developed within the context of Master Thesis titled: \textbf{Development of a Simulation Testbed for Evaluation of Impact/Contact Dynamics and Control of Non Cooperative Tumbling Satellites} in the Space Robotics Laboratory in Tohoku University in Sendai.
+
+\chapter{Installation of the software and setup}
+
+The main software that need to be installed is:
+
+\begin{itemize}
+	\item ROS Kinetic Kame (\url{http://wiki.ros.org/kinetic/Installation/Ubuntu})
+	\item Gazebo 7 (\url{http://gazebosim.org/blog/gazebo7})
+	\item Ubuntu 16 (\url{http://releases.ubuntu.com/16.04/})
+	\item GNU Scientific Library (sudo apt-get install libgsl-dev)
+\end{itemize}
+
+Please follow the instructions of installation of each of them. 
+
+Create a new catkin space:
+	
+	\begin{lstlisting}*[language=bash, caption={catkin space}]
+	
+	$ source /opt/ros/kinetic/setup.bash
+	
+	$ mkdir -p ~/catkin_ws/src
+	$ cd ~/catkin_ws/
+	$ catkin_make		
+	
+	\end{lstlisting}
+
+	
+
+
+\chapter{Organization of Packages in the Catkin\_Workspace}\label{catkinws}
+	
+	The following is an overall overview of the packages and meta-packages created in the catkin workspace to have an idea of the structure when referring to the different components of the project.  
+	
+	\vspace{30mm}
+	
+	\dirtree{%
+		.1 catkin\_ws.
+		.2 src.
+		.3 space\_robot\_vis.
+		.3 spacedyn\_ros.
+		.3 test\_gazebo.
+		.3 tohoku\_space\_manipulator.
+		.4 active\_debris\_control.
+		.4 chaser\_bringup.
+		.4 chaser\_control.
+		.4 chaser\_description.
+		.4 spacedyn\_integration.
+		.4 target\_description.
+		.3 test\_spd.
+	}
+	%
+	%}
+
+\section{Package: space\_robot\_vis }
+
+This package had the purpose to serve as a visualization interface between the results obtained from SpaceDyn Matlab in .dat and Gazebo Robotics Simulator.
+Hence, it is important to note the following implications:
+	
+	\begin{enumerate}
+		\item The physics engine is de-activated.
+		\item Hence, the inertial parameters in the description of the robot are not relevant. 
+		\item The only thing that matters is the geometry and making sure that the joints' type and geometries avoid self-collision.  
+		\item 
+	\end{enumerate}
+
+%\subsection{subsection}
+%
+%1. Make sure that Gazebo and ROS are properlly installed.
+%
+%2. Create a catkin_ws ( catkin workspace ) by executing
+%\$ source /opt/ros/kinetic/setup.sh
+%\$ mkdir -p ~/catkin_ws
+%\$ catkin_init_workspace
+%\$ cd ~/catkin_ws/
+%\$ catkin_make
+%3. Overlay the setup.sh of the new workspace to the environment
+%\$ source devel/setup.sh
+%
+%4. Make sure that the $ROS_PACKAGE_APTH is correct
+%
+%\$echo \
+%ni17917
+%ni
+%179317943	r1794444$ROS_PACKAGE_PATH
+%/home/youruser/catkin_ws/src:/opt/ros/kinetic/share:/opt/ros/kinetic/stacks
+%
+%5. Copy the space robot folder to ~/catkin_ws/src/
+%
+%5. Prepare the environment for your new space_robot_vis package using /devel/setup.sh
+%$ . ~/catkin_ws/src/space_robot_vis/devel/setup.sh
+%
+%--------------------------To execute the visualization----------------------
+%
+%a. Execute the initialization file
+%$ roscd space_robot_vis_vis_vis/devel
+%$ . init.sh
+%
+%b. Follow the instructions in the command prompt.
+%
+%c. Please remember to disable the physics in Gazebo!
+%In the left menu, look for World tab-> Physics -> enable_physics -> tick [] False
+%
+%d. If you want to execute again the visualization type 
+%$ . ~/catkin_ws/src/space_robot_vis/devel/pub.sh
+%
+
+	
+
+\subsection{URDF description}
+
+
+
+\section{Package: spacedyn\_ros }
+\subsection{New functions}
+
+\section{Package: test\_gazebo}
+
+\section{Metapackage: tohoku\_space\_manipulator}
+
+\subsection{Package: active\_debris\_control }
+\subsection{Package: chaser\_bringup}
+\subsection{Package: chaser\_control}
+\subsection{Package: chaser\_description}
+\subsection{Package: spacedyn\_integration}
+\subsection{Package: target\_description}
+\section{test\_spd}
+
+\subsection{}
+
+Please consider that this program was developed using gazebo-7
+
+
+List of things to cover in this document:
+
+
+ - Reference to the thesis
+ - List of plugins for the robot
+ - Important considerations in the 
+
+
+
+\end{document}          

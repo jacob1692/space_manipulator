@@ -1,0 +1,17 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Installation of the software and setup}{}% 2
+\BOOKMARK [0][-]{chapter.3}{Organization of Packages in the Catkin\137Workspace}{}% 3
+\BOOKMARK [1][-]{section.3.1}{Package: space\137robot\137vis }{chapter.3}% 4
+\BOOKMARK [2][-]{subsection.3.1.1}{URDF description}{section.3.1}% 5
+\BOOKMARK [1][-]{section.3.2}{Package: spacedyn\137ros }{chapter.3}% 6
+\BOOKMARK [2][-]{subsection.3.2.1}{New functions}{section.3.2}% 7
+\BOOKMARK [1][-]{section.3.3}{Package: test\137gazebo}{chapter.3}% 8
+\BOOKMARK [1][-]{section.3.4}{Metapackage: tohoku\137space\137manipulator}{chapter.3}% 9
+\BOOKMARK [2][-]{subsection.3.4.1}{Package: active\137debris\137control }{section.3.4}% 10
+\BOOKMARK [2][-]{subsection.3.4.2}{Package: chaser\137bringup}{section.3.4}% 11
+\BOOKMARK [2][-]{subsection.3.4.3}{Package: chaser\137control}{section.3.4}% 12
+\BOOKMARK [2][-]{subsection.3.4.4}{Package: chaser\137description}{section.3.4}% 13
+\BOOKMARK [2][-]{subsection.3.4.5}{Package: spacedyn\137integration}{section.3.4}% 14
+\BOOKMARK [2][-]{subsection.3.4.6}{Package: target\137description}{section.3.4}% 15
+\BOOKMARK [1][-]{section.3.5}{test\137spd}{chapter.3}% 16
+\BOOKMARK [2][-]{subsection.3.5.1}{}{section.3.5}% 17
